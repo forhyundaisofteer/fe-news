@@ -1,5 +1,7 @@
-## 진행한 작업
+## 프로젝트 링크
+https://forhyundaisofteer.github.io/fe-news/
 
+## 진행한 작업
 ### 2025/12/30
 - 뉴스 스탠드/스텝1 개발완료
 - 프로젝트 구조
