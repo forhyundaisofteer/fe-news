@@ -96,6 +96,10 @@ const reducer = (state, actionType, payload) => {
       };
     case 'SET_PAGE':
       return { ...state, currentPage: payload };
+    case 'NEXT_PAGE':
+      return { ...state, currentPage: state.currentPage + 1 };
+    case 'PREV_PAGE':
+      return { ...state, currentPage: state.currentPage - 1 };
     default:
       return state;
   }
