@@ -1,0 +1,26 @@
+{
+  "name": "fe-news",
+  "version": "1.0.0",
+  "description": "News FE",
+  "homepage": "https://github.com/forhyundaisofteer/fe-news#readme",
+  "bugs": {
+    "url": "https://github.com/forhyundaisofteer/fe-news/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forhyundaisofteer/fe-news.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server",
+    "format": "prettier --write \"**/*.{js,json,html,css,md}\""
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "prettier": "^3.0.0"
+  }
+}
