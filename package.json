@@ -16,6 +16,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server"
+    "start": "live-server",
+    "format": "prettier --write \"**/*.{js,json,html,css,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
   }
 }
