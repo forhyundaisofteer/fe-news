@@ -30,26 +30,40 @@ jobs:
 
       - name: Deploy Snapshot to gh-pages
         run: |
-          mkdir -p ../temp_build
-          rsync -av --exclude='.git' --exclude='node_modules' . ../temp_build/
+          # 작업 디렉토리 저장 (GITHUB_WORKSPACE는 항상 유효)
+          WORK_DIR="$GITHUB_WORKSPACE"
+          TEMP_BUILD_DIR="$WORK_DIR/../temp_build"
 
+          # 현재 소스 코드를 임시 디렉토리에 백업
+          mkdir -p "$TEMP_BUILD_DIR"
+          rsync -av --exclude='.git' --exclude='node_modules' "$WORK_DIR/" "$TEMP_BUILD_DIR/"
+
+          # gh-pages 브랜치 가져오기 및 체크아웃
           git fetch origin gh-pages || true
           git checkout gh-pages || git checkout -b gh-pages
 
+          # 커밋 해시 가져오기
           HASH=${{ steps.commit.outputs.hash }}
 
+          # snapshots 디렉토리 생성 및 파일 복사
           mkdir -p snapshots/$HASH
-          cp -r ../temp_build/* snapshots/$HASH/
+          cp -r "$TEMP_BUILD_DIR"/* snapshots/$HASH/
 
-          cp -r ../temp_build/* .
+          # 루트에도 최신 버전 복사
+          cp -r "$TEMP_BUILD_DIR"/* .
 
-          find . -name "node_modules" -type d -exec rm -rf {} + || true
-          find . -name ".git" -type d -exec rm -rf {} + || true
-          find . -name ".DS_Store" -delete || true
+          # snapshots 내부의 불필요한 파일만 제거 (현재 .git은 유지해야 함)
+          find snapshots/$HASH -name "node_modules" -type d -exec rm -rf {} + || true
+          find snapshots/$HASH -name ".git" -type d -exec rm -rf {} + || true
+          find snapshots/$HASH -name ".DS_Store" -delete || true
+          find . -maxdepth 1 -name "node_modules" -type d -exec rm -rf {} + || true
+          find . -maxdepth 1 -name ".DS_Store" -delete || true
 
+          # git 설정
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # 변경사항 추가 및 커밋
           git add snapshots/$HASH .
           git commit -m "Deploy snapshot: $HASH" || echo "No changes to commit"
           git push origin gh-pages
