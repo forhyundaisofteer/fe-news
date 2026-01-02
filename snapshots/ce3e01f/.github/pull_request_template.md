@@ -1,0 +1,21 @@
+## 완료 작업 목록
+  - NPM 환경 구성
+    - npm init
+  - Module System 변경 (CommonJS -> ESM)
+    - package.json에서 `"type": "commonjs"` -> `"type": "module"`
+  - .gitignore 세팅
+    - node_modules
+  - Live Server 세팅
+    - npm install -D live-server
+    - package.json에서 `"scripts" : {"start": "live-server"}`로 설정
+  - HTML 뼈대 잡기
+    - Semantic Elements 사용
+      - section
+      - header
+      - time 
+    - WAI-ARIA 적용
+      - aria-hidden
+      - aria-label
+      - role
+## 고민과 해결 과정
+  - 동적 html 들이 많을텐데, 어떻게 유지보수 쉽게 파일을 나눌 수 있을지 고민 중
