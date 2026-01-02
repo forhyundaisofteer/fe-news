@@ -1,80 +1,6 @@
 import { Store } from './store.js';
-
-const pressList = [
-  { name: '040', pngName: '040' },
-  { name: '042', pngName: '042' },
-  { name: '075', pngName: '075' },
-  { name: '076', pngName: '076' },
-  { name: '117', pngName: '117' },
-  { name: '120', pngName: '120' },
-  { name: '139', pngName: '139' },
-  { name: '140', pngName: '140' },
-  { name: '144', pngName: '144' },
-  { name: '312', pngName: '312' },
-  { name: '314', pngName: '314' },
-  { name: '326', pngName: '326' },
-  { name: '340', pngName: '340' },
-  { name: '345', pngName: '345' },
-  { name: '354', pngName: '354' },
-  { name: '355', pngName: '355' },
-  { name: '356', pngName: '356' },
-  { name: '376', pngName: '376' },
-  { name: '384', pngName: '384' },
-  { name: '396', pngName: '396' },
-  { name: '410', pngName: '410' },
-  { name: '440', pngName: '440' },
-  { name: '447', pngName: '447' },
-  { name: '801', pngName: '801' },
-  { name: '802', pngName: '802' },
-  { name: '804', pngName: '804' },
-  { name: '807', pngName: '807' },
-  { name: '808', pngName: '808' },
-  { name: '809', pngName: '809' },
-  { name: '814', pngName: '814' },
-  { name: '818', pngName: '818' },
-  { name: '819', pngName: '819' },
-  { name: '825', pngName: '825' },
-  { name: '910', pngName: '910' },
-  { name: '913', pngName: '913' },
-  { name: '914', pngName: '914' },
-  { name: '917', pngName: '917' },
-  { name: '920', pngName: '920' },
-  { name: '922', pngName: '922' },
-  { name: '923', pngName: '923' },
-  { name: '925', pngName: '925' },
-  { name: '928', pngName: '928' },
-  { name: '932', pngName: '932' },
-  { name: '934', pngName: '934' },
-  { name: '938', pngName: '938' },
-  { name: '941', pngName: '941' },
-  { name: '942', pngName: '942' },
-  { name: '946', pngName: '946' },
-  { name: '947', pngName: '947' },
-  { name: '952', pngName: '952' },
-  { name: '953', pngName: '953' },
-  { name: '954', pngName: '954' },
-  { name: '956', pngName: '956' },
-  { name: '957', pngName: '957' },
-  { name: '963', pngName: '963' },
-  { name: '964', pngName: '964' },
-  { name: '965', pngName: '965' },
-  { name: '966', pngName: '966' },
-  { name: '967', pngName: '967' },
-  { name: '968', pngName: '968' },
-  { name: '969', pngName: '969' },
-  { name: '970', pngName: '970' },
-  { name: '972', pngName: '972' },
-  { name: '973', pngName: '973' },
-  { name: '974', pngName: '974' },
-  { name: '977', pngName: '977' },
-  { name: '979', pngName: '979' },
-  { name: '981', pngName: '981' },
-  { name: '982', pngName: '982' },
-  { name: '984', pngName: '984' },
-  { name: '989', pngName: '989' },
-  { name: '991', pngName: '991' },
-  { name: '993', pngName: '993' },
-];
+import { reducer } from './reducer.js';
+import { pressList } from './pressData.js';
 
 const initialState = {
   allPress: pressList, 
@@ -83,34 +9,5 @@ const initialState = {
   currentPage: 0, 
 };
 
-const reducer = (state, actionType, payload) => {
-  switch (actionType) {
-    case 'SET_TAB':
-      return { ...state, currentTab: payload, currentPage: 0 };
-    case 'SUBSCRIBE': {
-      const updatedSubscribed = [...state.subscribedIds, payload];
-      const resetPage = state.currentTab === 'subscribed' ? 0 : state.currentPage;
-      return { ...state, subscribedIds: updatedSubscribed, currentPage: resetPage };
-    }
-    case 'UNSUBSCRIBE': {
-      const updatedSubscribed = state.subscribedIds.filter((id) => id !== payload);
-      const resetPage = state.currentTab === 'subscribed' ? 0 : state.currentPage;
-      return { ...state, subscribedIds: updatedSubscribed, currentPage: resetPage };
-    }
-    case 'SET_PAGE':
-      return { ...state, currentPage: payload };
-    case 'NEXT_PAGE':
-      return { ...state, currentPage: state.currentPage + 1 };
-    case 'PREV_PAGE':
-      return { ...state, currentPage: state.currentPage - 1 };
-    default:
-      return state;
-  }
-};
-
 export const store = new Store(initialState, reducer);
-
-store.getAllPress = function() {
-  return this.getState().allPress;
-};
 
