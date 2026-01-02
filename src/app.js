@@ -5,8 +5,7 @@ import { renderNewsTicker } from './components/news-ticker/newsTicker.js';
 import { renderPressHeader } from './components/press-header/pressHeader.js';
 import { store } from './store/index.js';
 
-const state = store.getState();
-const pressList = state.allPress;
+const pressList = store.getAllPress();
 
 renderNewsstandHeader('#newsstand-header-container');
 renderNewsTicker('#news-ticker-container');

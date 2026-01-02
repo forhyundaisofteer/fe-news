@@ -107,3 +107,8 @@ const reducer = (state, actionType, payload) => {
 
 export const store = new Store(initialState, reducer);
 
+// Helper methods for accessing specific state properties
+store.getAllPress = function() {
+  return this.getState().allPress;
+};
+

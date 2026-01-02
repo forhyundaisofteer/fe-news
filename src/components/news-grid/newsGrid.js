@@ -10,14 +10,14 @@ let prevBtn = null;
 let nextBtn = null;
 
 export const actions = {
-  nextPage: () => {
+  nextPage() {
     const state = store.getState();
     const totalPages = pages.length;
     if (state.currentPage < totalPages - 1) {
       store.dispatch('NEXT_PAGE');
     }
   },
-  prevPage: () => {
+  prevPage() {
     const state = store.getState();
     if (state.currentPage > 0) {
       store.dispatch('PREV_PAGE');
