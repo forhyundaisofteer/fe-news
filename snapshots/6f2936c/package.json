@@ -1,0 +1,26 @@
+{
+  "name": "fe-news",
+  "version": "1.0.0",
+  "description": "News FE",
+  "homepage": "https://github.com/forhyundaisofteer/fe-news#readme",
+  "bugs": {
+    "url": "https://github.com/forhyundaisofteer/fe-news/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forhyundaisofteer/fe-news.git"
+  },
+  "license": "ISC",
+  "author": "Jiun Hong",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "vite build",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "vite": "^6.4.1",
+    "wrangler": "^3.114.16"
+  }
+}
