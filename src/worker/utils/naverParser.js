@@ -6,45 +6,27 @@ export async function fetchNaverData() {
       }
     });
     const html = await response.text();
-    const finalData = {};
-
-    const searchPattern = /window\[["']EAGER-DATA["']\]\[["']([^"']+)["']\]\s*=\s*\{/g;
-    let match;
-
-    while ((match = searchPattern.exec(html)) !== null) {
-      const key = match[1];
-      const startPos = match.index + match[0].length - 1;
-      
-      let braceCount = 0;
-      let endPos = -1;
-      for (let i = startPos; i < html.length; i++) {
-        if (html[i] === '{') braceCount++;
-        else if (html[i] === '}') braceCount--;
-        if (braceCount === 0) {
-          endPos = i;
-          break;
-        }
-      }
-
-      if (endPos !== -1) {
-        let rawStr = html.substring(startPos, endPos + 1);
-        
-        try {
-          finalData[key] = JSON.parse(rawStr);
-        } catch (e) {
-          try {
-            const sanitized = rawStr
-              .replace(/([{,]\s*)([a-zA-Z0-9_]+)\s*:/g, '$1"$2":') 
-              .replace(/'/g, '"') 
-              .replace(/,\s*}/g, '}'); 
-            finalData[key] = JSON.parse(sanitized);
-          } catch (innerE) {
-            console.warn(`[Parser] '${key}' data skipped`);
-          }
-        }
-      }
+    
+    const eagerDataIndex = html.indexOf('window["EAGER-DATA"]') || html.indexOf("window['EAGER-DATA']");
+    
+    if (eagerDataIndex === -1) {
+      return null;
     }
-    return finalData;
+    
+    let scriptStart = html.lastIndexOf('<script', eagerDataIndex);
+    if (scriptStart === -1) {
+      return null;
+    }
+    
+    scriptStart = html.indexOf('>', scriptStart) + 1;
+    const scriptEnd = html.indexOf('</script>', scriptStart);
+    
+    if (scriptEnd === -1) {
+      return null;
+    }
+    
+    const scriptContent = html.substring(scriptStart, scriptEnd).trim();
+    return scriptContent;
   } catch (error) {
     console.error("Naver Fetch Error:", error);
     return null;
