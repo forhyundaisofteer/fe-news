@@ -1,7 +1,17 @@
 ## 프로젝트 링크
-https://forhyundaisofteer.github.io/fe-news/
+fe-news.forhyundaisofteer.workers.dev
 
 ## 진행한 작업
+### 2025/01/07
+- 
+  - store 및 reducer 로직 구현
+  - 엣지 케이스 잡기 
+  
+### 2025/01/02
+- 구독 기능 구현
+  - store 및 reducer 로직 구현
+  - 엣지 케이스 잡기 
+
 ### 2025/12/30
 - 뉴스 스탠드/스텝1 개발완료
 - 프로젝트 구조
@@ -30,17 +40,7 @@ https://forhyundaisofteer.github.io/fe-news/
     - aria-label
     - role
 
-### 2025/01/02
-- 구독 기능 구현
-  - store 및 reducer 로직 구현
-  - 엣지 케이스 잡기 
 
 ## 진행해야 할 작업
-
-- #press-content 아래에 동적 HTML 삽입
-  - 유지보수성 고려해서 어떻게 나눌지 고민
-- 공통된 부분들 컴포넌트화
-- CSS 다크 모드 적용
-  - [data-theme="dark"]
-- 롤링 구현
-- Dialog 구현
+- 롤링 기능 구현 
+- 리스트뷰 구현
