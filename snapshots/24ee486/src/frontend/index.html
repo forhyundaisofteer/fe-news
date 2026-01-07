@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Stand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/favi/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/favi/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/favi/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/favi/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/favi/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/favi/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/favi/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/favi/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/favi/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favi/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/favi/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favi/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favi/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favi/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favi/manifest.json" />
+    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./app.css" />
+    <link rel="stylesheet" href="./components/newsstand-header/newsstandHeader.css" />
+    <link rel="stylesheet" href="./components/news-ticker/newsTicker.css" />
+    <link rel="stylesheet" href="./components/press-header/pressHeader.css" />
+    <link rel="stylesheet" href="./components/news-grid/newsGrid.css" />
+  </head>
+  <body>
+    <!-- 1. 기본 상단 영역 -->
+    <div id="newsstand">
+      <div id="newsstand-header-container"></div>
+      <!-- 2. 최신 뉴스 자동롤링 영역 -->
+      <div id="news-ticker-container"></div>
+      <!-- 3. 언론사별 기사들을 확인하는 영역 -->
+      <section class="press-stand">
+        <div id="press-header-container"></div>
+        <div class="press-content"></div>
+      </section>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

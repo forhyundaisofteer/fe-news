@@ -1,0 +1,92 @@
+:root {
+  /* Color Default Value - Grayscale */
+  --grayscale-white: #FFFFFF;
+  --grayscale-white-alt: rgba(255, 255, 255, 0.7); /* #FFFFFF(70%) */
+  --grayscale-50: #F5F7F9;
+  --grayscale-100: #D2DAE0;
+  --grayscale-200: #879298;
+  --grayscale-300: #6E8091;
+  --grayscale-400: #5F6E76;
+  --grayscale-500: #4B5966;
+  --grayscale-black: #14212B;
+
+  /* Color Default Value - Blue */
+  --blue-100: #7890E7;
+  --blue-500: #4362D0;
+
+  /* Semantic Tokens - Light Mode (Default) */
+  --text-strong: var(--grayscale-black);
+  --text-bold: var(--grayscale-500);
+  --text-default: var(--grayscale-400);
+  --text-weak: var(--grayscale-200);
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-alt);
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-white);
+  --surface-alt: var(--grayscale-50);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+}
+
+/* 명시적으로 라이트모드 설정 */
+[data-theme='light'] {
+  --text-strong: var(--grayscale-black);
+  --text-bold: var(--grayscale-500);
+  --text-default: var(--grayscale-400);
+  --text-weak: var(--grayscale-200);
+  --text-white-default: var(--grayscale-white);
+  --text-white-weak: var(--grayscale-white-alt);
+  --text-point: var(--blue-500);
+
+  --surface-default: var(--grayscale-white);
+  --surface-alt: var(--grayscale-50);
+  --surface-brand-default: var(--blue-500);
+  --surface-brand-alt: var(--blue-100);
+
+  --border-bold: var(--grayscale-300);
+  --border-default: var(--grayscale-100);
+}
+
+/* Semantic Tokens - Dark Mode (data-theme이 없을 때만 시스템 설정 따름) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --text-strong: var(--grayscale-white);
+    --text-bold: var(--grayscale-50);
+    --text-default: var(--grayscale-100);
+    --text-weak: var(--grayscale-white-alt);
+    --text-white-default: var(--grayscale-white);
+    --text-white-weak: var(--grayscale-white-alt);
+    --text-point: var(--blue-500);
+
+    --surface-default: var(--grayscale-black);
+    --surface-alt: var(--grayscale-500);
+    --surface-brand-default: var(--blue-500);
+    --surface-brand-alt: var(--blue-100);
+
+    --border-bold: var(--grayscale-white-alt);
+    --border-default: var(--grayscale-400);
+  }
+}
+
+/* (선택사항) 클래스로 다크모드를 제어하고 싶을 경우 */
+[data-theme='dark'] {
+    --text-strong: var(--grayscale-white);
+    --text-bold: var(--grayscale-50);
+    --text-default: var(--grayscale-100);
+    --text-weak: var(--grayscale-white-alt);
+    --text-white-default: var(--grayscale-white);
+    --text-white-weak: var(--grayscale-white-alt);
+    --text-point: var(--blue-500);
+
+    --surface-default: var(--grayscale-black);
+    --surface-alt: var(--grayscale-500);
+    --surface-brand-default: var(--blue-500);
+    --surface-brand-alt: var(--blue-100);
+
+    --border-bold: var(--grayscale-white-alt);
+    --border-default: var(--grayscale-400);
+}
