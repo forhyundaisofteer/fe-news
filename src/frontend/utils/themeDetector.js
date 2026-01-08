@@ -1,8 +1,10 @@
-
 export function getCurrentTheme() {
-  // const htmlTheme = document.documentElement.getAttribute('data-theme');
   // 다크모드 완성할 때 까지 light로 설정
   return 'light';
+  
+  // 아래 코드는 다크모드 완성 후 활성화
+  /*
+  const htmlTheme = document.documentElement.getAttribute('data-theme');
   if (htmlTheme === 'dark' || htmlTheme === 'light') {
     return htmlTheme;
   }
@@ -29,5 +31,6 @@ export function getCurrentTheme() {
   }
 
   return 'light';
+  */
 }
 

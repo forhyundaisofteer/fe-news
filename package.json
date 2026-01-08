@@ -14,7 +14,7 @@
   "author": "Jiun Hong",
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
+    "start": "vite build && wrangler dev --port 3000",
     "build": "vite build",
     "deploy": "npm run build && wrangler deploy"
   },

@@ -1,4 +1,4 @@
-import { getCurrentTheme } from './themeDetector.js';
+import { getCurrentTheme } from '../../utils/themeDetector.js';
 
 export function mapPngToUrls(pngNames, theme = 'auto') {
   const currentTheme = theme === 'auto' ? getCurrentTheme() : theme;

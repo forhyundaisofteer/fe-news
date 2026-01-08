@@ -3,48 +3,31 @@ import { renderNewsGrid } from './components/news-grid/newsGrid.js';
 import { renderNewsstandHeader } from './components/newsstand-header/newsstandHeader.js';
 import { renderNewsTicker } from './components/news-ticker/newsTicker.js';
 import { renderPressHeader } from './components/press-header/pressHeader.js';
-import { observeStore } from './utils/observer.js';
+import { observeStore } from './store/observeStore.js';
 import { shallowEqual } from './utils/compare.js';
+import { selectors } from './store/modules/grid.js';
 
-const selectFilteredPress = (state) => {
-  const { allPress, currentTab, subscribedIds } = state;
-  if (currentTab === 'subscribed') {
-    const subscribedSet = new Set(subscribedIds);
-    return allPress.filter((press) => subscribedSet.has(press.name));
-  }
-  return allPress;
-};
-
-const updateNewsContent = (filteredPressList) => {
-  renderPressToDOM(filteredPressList, '.press-content');
-  renderNewsGrid(filteredPressList, '.press-content', 'auto');
-};
-
+// 정적 요소 렌더링
 renderNewsstandHeader('#newsstand-header-container');
 renderNewsTicker('#news-ticker-container');
 
-
-// 헤더 영역
+// 동적 요소 렌더링
 observeStore(
   (state) => ({ 
-    tab: state.currentTab, 
-    count: state.subscribedIds.length 
+    currentTab: state.currentTab, 
+    subscribedCount: state.subscribedIds.length 
   }),
-  (data) => {
-    renderPressHeader('#press-header-container');
+  (selectedState) => {
+    renderPressHeader('#press-header-container', selectedState);
   },
   shallowEqual
 );
 
-// 뉴스 컨텐츠 영역
 observeStore(
-  (state) => ({ 
-    currentTab: state.currentTab, 
-    subscribedIds: state.subscribedIds 
-  }),
-  (data, state) => { 
-    const filteredList = selectFilteredPress(state);
-    updateNewsContent(filteredList);
+  (state) => selectors.getFilteredPress(state),
+  (filteredPress) => { 
+    renderPressToDOM(filteredPress, '.press-content');
+    renderNewsGrid('.press-content', 'auto');
   },
   shallowEqual
 );
